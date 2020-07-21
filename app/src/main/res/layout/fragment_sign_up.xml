@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="420dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/loginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="110dp"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailTextLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="email"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:hint="E-mail"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/emailTextLayout"
+                    android:autofillHints="Name"
+                    app:counterMaxLength="15"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/email"
+                        android:layout_marginTop="8dp"
+                        android:hint="UserName"
+                        android:inputType="textPassword"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userLayout"
+                    android:autofillHints="password"
+                    app:errorEnabled="true"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/email"
+                        android:layout_marginTop="8dp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loginLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginLayout">
+
+
+                <Button
+                    android:id="@+id/signUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="signUp"
+                    android:text="SIGNUP" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
