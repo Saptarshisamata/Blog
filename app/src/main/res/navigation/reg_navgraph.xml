@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/reg_navgraph"
-    app:startDestination="@id/logInFragment">
-
+    app:startDestination="@id/welcomeFragment">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.saptarshisamanta.blog.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.saptarshisamanta.blog.signup.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_fragmentOtp"
+            app:destination="@id/fragmentOtp" />
+    </fragment>
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.saptarshisamanta.blog.login.LogInFragment"
-        android:label="LogInFragment" />
+        android:label="LogInFragment" >
+        <action
+            android:id="@+id/action_logInFragment_to_fragmentOtp"
+            app:destination="@id/fragmentOtp" />
+        <action
+            android:id="@+id/action_logInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentOtp"
+        android:name="com.saptarshisamanta.blog.FragmentOtp"
+        android:label="FragmentOtp" />
 </navigation>
