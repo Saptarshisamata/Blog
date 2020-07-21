@@ -11,8 +11,8 @@ import com.saptarshisamanta.blog.R
 import com.saptarshisamanta.blog.databinding.FragmentLogInBinding
 
 class LogInFragment : Fragment(){
-    lateinit var fragmentLogInBinding: FragmentLogInBinding
-    lateinit var logInFragmentViewModel:LogInFragmentViewModel
+    private lateinit var fragmentLogInBinding: FragmentLogInBinding
+    private lateinit var logInFragmentViewModel:LogInFragmentViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
