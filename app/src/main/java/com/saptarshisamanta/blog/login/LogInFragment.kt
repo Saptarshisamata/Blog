@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.saptarshisamanta.blog.R
 import com.saptarshisamanta.blog.databinding.FragmentLogInBinding
 
@@ -19,12 +21,18 @@ class LogInFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         fragmentLogInBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_log_in,container,false)
-        var view:View = fragmentLogInBinding.root
+
         logInFragmentViewModel = ViewModelProvider(this).get(LogInFragmentViewModel::class.java)
-        fragmentLogInBinding.login.setOnClickListener {
+        fragmentLogInBinding.login.setOnClickListener {view:View?->
             login()
+            //Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_fragmentOtp)
+            view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
+            //Navigation.createNavigateOnClickListener(R.id.action_logInFragment_to_fragmentOtp)
         }
-        return  view
+        fragmentLogInBinding.signuppage.setOnClickListener { view: View? ->
+            view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToSignUpFragment())
+        }
+        return  fragmentLogInBinding.root
     }
     private fun login(){
         val email:String = fragmentLogInBinding.emailTextLayout.editText!!.text.toString().trim()

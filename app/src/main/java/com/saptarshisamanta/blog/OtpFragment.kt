@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.saptarshisamanta.blog.databinding.FragmentOtpBinding
 
-class FragmentOtp : Fragment(){
+class OtpFragment : Fragment(){
     lateinit var fragmentOtpBinding: FragmentOtpBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -16,7 +16,6 @@ class FragmentOtp : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         fragmentOtpBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_otp,container,false)
-        var view:View = fragmentOtpBinding.root
-        return  view
+        return fragmentOtpBinding.root
     }
 }

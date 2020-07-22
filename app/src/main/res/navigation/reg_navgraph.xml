@@ -11,9 +11,6 @@
         tools:layout="@layout/fragment_welcome"
         >
         <action
-            android:id="@+id/action_welcomeFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
             android:id="@+id/action_welcomeFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
     </fragment>
@@ -42,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentOtp"
-        android:name="com.saptarshisamanta.blog.FragmentOtp"
+        android:name="com.saptarshisamanta.blog.OtpFragment"
         android:label="FragmentOtp"
         tools:layout="@layout/fragment_otp"
         />
