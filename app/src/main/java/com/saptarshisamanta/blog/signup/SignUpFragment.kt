@@ -29,7 +29,9 @@ class SignUpFragment : Fragment(){
         val password:String = fragmentSignUpBinding.passwordLayout.editText!!.text.toString().trim()
         val username:String = fragmentSignUpBinding.userLayout.editText!!.text.toString().trim()
 
-        if (validateEmail(email) && validatePassword(password) && username.isNotEmpty()){
+        if (!(validateEmail(email) || validatePassword(password) || username.isNotEmpty())){
+            return
+        }else{
             // TODO(2) signUp api handle
             requireView().findNavController().navigate(SignUpFragmentDirections.actionSignUpFragmentToFragmentOtp())
         }
@@ -45,10 +47,10 @@ class SignUpFragment : Fragment(){
     }
     private fun validatePassword(password:String) : Boolean {
         return if (password.isEmpty()){
-            fragmentSignUpBinding.emailTextLayout.error = "Password Required"
+            fragmentSignUpBinding.passwordLayout.error = "Password Required"
             false
         }else{
-            fragmentSignUpBinding.emailTextLayout.error = null
+            fragmentSignUpBinding.passwordLayout.error = null
             true
         }
     }

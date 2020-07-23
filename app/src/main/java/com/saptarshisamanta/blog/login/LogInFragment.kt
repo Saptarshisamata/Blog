@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.saptarshisamanta.blog.R
 import com.saptarshisamanta.blog.databinding.FragmentLogInBinding
@@ -23,14 +22,14 @@ class LogInFragment : Fragment(){
         fragmentLogInBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_log_in,container,false)
 
         logInFragmentViewModel = ViewModelProvider(this).get(LogInFragmentViewModel::class.java)
-        fragmentLogInBinding.login.setOnClickListener {view:View?->
+        fragmentLogInBinding.login.setOnClickListener {
             login()
             //Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_fragmentOtp)
-            view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
+            //view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
             //Navigation.createNavigateOnClickListener(R.id.action_logInFragment_to_fragmentOtp)
         }
-        fragmentLogInBinding.signuppage.setOnClickListener { view: View? ->
-            view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToSignUpFragment())
+        fragmentLogInBinding.signuppage.setOnClickListener { view: View ->
+            view.findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToSignUpFragment())
         }
         return  fragmentLogInBinding.root
     }
@@ -38,11 +37,14 @@ class LogInFragment : Fragment(){
         val email:String = fragmentLogInBinding.emailTextLayout.editText!!.text.toString().trim()
         val password:String = fragmentLogInBinding.passwordLayout.editText!!.text.toString().trim()
 
-        if (validateEmail(email) && validatePassword(password)){
-            var parameter:HashMap<String,String> = HashMap()
+        if (!(validateEmail(email) || validatePassword(password))){
+            return
+        }else{
+            val parameter:HashMap<String,String> = HashMap()
             parameter["email"] = email
             parameter["password"] = password
             // TODO(01) login api handling
+            view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
         }
     }
     private fun validateEmail(email:String) : Boolean {
@@ -56,10 +58,10 @@ class LogInFragment : Fragment(){
     }
     private fun validatePassword(password:String) : Boolean {
         return if (password.isEmpty()){
-            fragmentLogInBinding.emailTextLayout.error = "Password Required"
+            fragmentLogInBinding.passwordLayout.error = "Password Required"
             false
         }else{
-            fragmentLogInBinding.emailTextLayout.error = null
+            fragmentLogInBinding.passwordLayout.error = null
             true
         }
     }
