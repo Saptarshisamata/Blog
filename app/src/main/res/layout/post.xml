@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="post"
+            type="com.saptarshisamanta.blog.data.Post" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:imageurl="@{post.post_pic}"
+                />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="170dp"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@+id/profile_image"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="14dp"
+                android:layout_toEndOf="@+id/profile_image"
+                android:text="@{post.name}"
+                android:textSize="24sp"
+                tool:text="test text" />
+
+            <RelativeLayout
+                android:id="@+id/layout_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_image"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:id="@+id/post_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{post.post}"
+                    />
+                <ImageView
+                    android:id="@+id/post_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_below="@+id/post_text"
+                    android:layout_marginTop="8dp"
+                    android:imageurl="@{post.post_pic}"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_body">
+                <ImageView
+                    android:id="@+id/fav"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginStart="70dp"
+                    android:src="@drawable/ic_baseline_favorite"/>
+
+                <TextView
+                    android:id="@+id/fav_count"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/fav"
+                    android:layout_marginTop="10dp"
+                    android:text="@{post.fav_count}" />
+
+                <ImageView
+                    android:id="@+id/comment"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_toEndOf="@+id/fav"
+                    android:layout_marginStart="140dp"
+                    android:src="@drawable/ic_baseline_comment"
+                    android:contentDescription="TODO" />
+                <TextView
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/comment"
+                    android:layout_marginTop="10dp"
+                    android="@+id/comment"
+                    android:text="@{post.comment_count}"
+                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
