@@ -5,6 +5,9 @@
         <variable
             name="post"
             type="com.saptarshisamanta.blog.data.Post" />
+        <variable
+            name="clickListener"
+            type="com.saptarshisamanta.blog.adapter.PostListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -55,6 +58,7 @@
                     android:layout_height="320dp"
                     android:layout_below="@+id/post_text"
                     android:layout_marginTop="8dp"
+                    android:onClick="@{() -> clickListener.onClick(post)}"
                     android:imageurl="@{post.post_pic}"
                     />
             </RelativeLayout>

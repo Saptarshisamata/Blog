@@ -8,23 +8,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saptarshisamanta.blog.data.Post
 import com.saptarshisamanta.blog.databinding.PostBinding
 
-class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
+class PostAdapter(val postListener: PostListener) :
+    ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         return PostViewHolder.postViewHolder(parent)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), postListener)
     }
 
 
-    class PostViewHolder private constructor(val postBinding: PostBinding) : RecyclerView.ViewHolder(postBinding.root) {
+    class PostViewHolder private constructor(val postBinding: PostBinding) :
+        RecyclerView.ViewHolder(postBinding.root) {
         fun bind(
-            post: Post
+            post: Post,
+            postListener: PostListener
         ) {
             postBinding.post = post
+            postBinding.clickListener = postListener
         }
+
         companion object {
             fun postViewHolder(parent: ViewGroup): PostViewHolder {
                 val postBinding: PostBinding =
@@ -33,7 +38,6 @@ class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallba
             }
         }
     }
-
 
 }
 
@@ -46,4 +50,8 @@ class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
         TODO("Not yet implemented")
     }
 
+}
+
+class PostListener(var clickListener: (postId: String) -> Unit) {
+    fun onClick(post: Post) = clickListener(post._ID)
 }
