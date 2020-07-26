@@ -2,30 +2,39 @@ package com.saptarshisamanta.blog.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.saptarshisamanta.blog.R
 import com.saptarshisamanta.blog.data.Post
 import com.saptarshisamanta.blog.databinding.PostBinding
 
 class PostAdapter : ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        //TODO("Not yet implemented")
-        val postBinding:PostBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.post,parent,false)
-        return PostViewHolder(postBinding)
+        return PostViewHolder.postViewHolder(parent)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        //TODO("Not yet implemented")
-        val post:Post = getItem(position)
-        holder.postBinding.post = post
+        holder.bind(getItem(position))
     }
 
-    class PostViewHolder(val postBinding: PostBinding) : RecyclerView.ViewHolder(postBinding.root) {
+
+    class PostViewHolder private constructor(val postBinding: PostBinding) : RecyclerView.ViewHolder(postBinding.root) {
+        fun bind(
+            post: Post
+        ) {
+            postBinding.post = post
+        }
+        companion object {
+            fun postViewHolder(parent: ViewGroup): PostViewHolder {
+                val postBinding: PostBinding =
+                    PostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return PostViewHolder(postBinding)
+            }
+        }
     }
+
+
 }
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
