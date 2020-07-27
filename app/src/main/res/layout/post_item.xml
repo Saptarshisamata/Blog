@@ -23,7 +23,6 @@
                 android:id="@+id/profile_image"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:imageurl="@{post.post_pic}"
                 />
 
             <TextView
@@ -59,7 +58,6 @@
                     android:layout_below="@+id/post_text"
                     android:layout_marginTop="8dp"
                     android:onClick="@{() -> clickListener.onClick(post)}"
-                    android:imageurl="@{post.post_pic}"
                     />
             </RelativeLayout>
             <RelativeLayout

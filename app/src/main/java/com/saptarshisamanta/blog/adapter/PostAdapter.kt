@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.saptarshisamanta.blog.data.Post
-import com.saptarshisamanta.blog.databinding.PostBinding
+import com.saptarshisamanta.blog.databinding.PostItemBinding
 
 class PostAdapter(val postListener: PostListener) :
     ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
@@ -20,20 +20,20 @@ class PostAdapter(val postListener: PostListener) :
     }
 
 
-    class PostViewHolder private constructor(val postBinding: PostBinding) :
-        RecyclerView.ViewHolder(postBinding.root) {
+    class PostViewHolder private constructor(val postItemBinding: PostItemBinding) :
+        RecyclerView.ViewHolder(postItemBinding.root) {
         fun bind(
             post: Post,
             postListener: PostListener
         ) {
-            postBinding.post = post
-            postBinding.clickListener = postListener
+            postItemBinding.post = post
+            postItemBinding.clickListener = postListener
         }
 
         companion object {
             fun postViewHolder(parent: ViewGroup): PostViewHolder {
-                val postBinding: PostBinding =
-                    PostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                val postBinding =
+                    PostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 return PostViewHolder(postBinding)
             }
         }
