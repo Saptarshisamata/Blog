@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="320dp"
             android:layout_height="380dp"
@@ -17,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="114dp"
+                android:layout_marginTop="100dp"
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="114dp"
                 android:layout_below="@+id/loginLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -86,27 +88,27 @@
                     android:id="@+id/signuppage"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="28dp"
+                    android:layout_height="36dp"
                     android:layout_below="@+id/login"
                     android:layout_marginStart="116dp"
                     android:layout_marginTop="8dp"
-                    android:textAppearance="?attr/textAppearanceCaption"
                     android:layout_marginEnd="116dp"
-                    android:text="Register"
                     android:onClick="gotosignup"
-                    android:textSize="14sp" />
+                    android:text="Register"
+                    android:textAppearance="?attr/textAppearanceCaption"
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/forgotpass"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/signuppage"
-                    android:layout_marginStart="4dp"
+
+                    android:layout_marginTop="0dp"
                     android:text="Forgot password"
-                    android:layout_marginTop="10dp"
                     android:textAppearance="?attr/textAppearanceCaption"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
             </RelativeLayout>
 

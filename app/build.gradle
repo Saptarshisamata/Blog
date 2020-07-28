@@ -6,7 +6,9 @@ apply plugin: "androidx.navigation.safeargs.kotlin"
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     defaultConfig {
         applicationId "com.saptarshisamanta.blog"
         minSdkVersion 21
@@ -51,6 +53,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
     // Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-
+    //for circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

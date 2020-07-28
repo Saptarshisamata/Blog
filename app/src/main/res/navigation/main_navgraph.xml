@@ -7,19 +7,16 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.saptarshisamanta.blog.post.PostFragment"
-        android:label="PostFragment"
-        tools:layout="@layout/fragment_post"
-        />
+        android:label="Posts"
+        tools:layout="@layout/fragment_post" />
     <fragment
         android:id="@+id/createPostFragment"
         android:name="com.saptarshisamanta.blog.createPost.CreatePostFragment"
-        android:label="CreatePostFragment"
-        tools:layout="@layout/fragment_create_post"
-        />
+        android:label="CreatePost"
+        tools:layout="@layout/fragment_create_post" />
     <fragment
         android:id="@+id/menuFragment"
         android:name="com.saptarshisamanta.blog.MenuFragment"
-        android:label="MenuFragment"
-        tools:layout="@layout/fragment_menu"
-        />
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
 </navigation>
