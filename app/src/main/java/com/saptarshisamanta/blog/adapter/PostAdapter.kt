@@ -43,11 +43,11 @@ class PostAdapter(var postListener: PostListener) :
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return false
+        return oldItem._ID == newItem._ID
     }
 
     override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return false
+        return oldItem == newItem
     }
 
 }
