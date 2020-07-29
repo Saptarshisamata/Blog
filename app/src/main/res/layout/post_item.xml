@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools">
     <data>
         <variable
@@ -13,30 +14,30 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="2dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="4dp">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/ic_launcher"
                 />
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="170dp"
-                android:layout_height="35dp"
+                android:layout_height="48dp"
                 android:layout_alignBottom="@+id/profile_image"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="14dp"
+                android:layout_marginStart="6dp"
+                android:gravity="center|start"
                 android:layout_toEndOf="@+id/profile_image"
                 android:text="@{post.name}"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 tool:text="test text" />
 
             <RelativeLayout
@@ -44,21 +45,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profile_image"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="4dp">
                 <TextView
                     android:id="@+id/post_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{post.post}"
                     />
+
                 <ImageView
                     android:id="@+id/post_image"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="360dp"
                     android:layout_below="@+id/post_text"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerHorizontal="true"
                     android:onClick="@{() -> clickListener.onClick(post)}"
-                    />
+                    app:srcCompat="@color/colorAccent" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -66,34 +69,35 @@
                 android:layout_below="@+id/layout_body">
                 <ImageView
                     android:id="@+id/fav"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_marginStart="70dp"
                     android:src="@drawable/ic_baseline_favorite"/>
 
                 <TextView
                     android:id="@+id/fav_count"
                     android:layout_width="42dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="-2dp"
+                    android:gravity="center"
                     android:layout_toEndOf="@+id/fav"
-                    android:layout_marginTop="10dp"
-                    android:text="@{post.fav_count}" />
+                    android:text="@{String.valueOf(post.fav_count)}" />
 
                 <ImageView
                     android:id="@+id/comment"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_toEndOf="@+id/fav"
                     android:layout_marginStart="140dp"
                     android:src="@drawable/ic_baseline_comment"
-                    android:contentDescription="TODO" />
+                     />
                 <TextView
                     android:layout_width="42dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="32dp"
                     android:layout_toEndOf="@+id/comment"
-                    android:layout_marginTop="10dp"
+                    android:gravity="center"
                     android="@+id/comment"
-                    android:text="@{post.comment_count}"
+                    android:text="@{String.valueOf(post.comment_count)}"
                     />
             </RelativeLayout>
 

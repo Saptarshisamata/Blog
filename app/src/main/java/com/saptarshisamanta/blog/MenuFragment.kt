@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.saptarshisamanta.blog.databinding.FragmentMenuBinding
 
 class MenuFragment : Fragment(){
-    lateinit var fragmentMenuBinding: FragmentMenuBinding
+    private lateinit var fragmentMenuBinding: FragmentMenuBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saptarshisamanta.blog.data.Post
 import com.saptarshisamanta.blog.databinding.PostItemBinding
 
-class PostAdapter(val postListener: PostListener) :
+class PostAdapter(var postListener: PostListener) :
     ListAdapter<Post, PostAdapter.PostViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
@@ -16,11 +16,11 @@ class PostAdapter(val postListener: PostListener) :
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(getItem(position), postListener)
+        holder.bind(getItem(position)!!, postListener)
     }
 
 
-    class PostViewHolder private constructor(val postItemBinding: PostItemBinding) :
+    class PostViewHolder private constructor(var postItemBinding: PostItemBinding) :
         RecyclerView.ViewHolder(postItemBinding.root) {
         fun bind(
             post: Post,
@@ -43,11 +43,11 @@ class PostAdapter(val postListener: PostListener) :
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
 }
