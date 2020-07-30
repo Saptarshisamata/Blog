@@ -27,6 +27,7 @@ class PostAdapter(var postListener: PostListener) :
             postListener: PostListener
         ) {
             postItemBinding.post = post
+            postItemBinding.executePendingBindings()
             postItemBinding.clickListener = postListener
         }
 
