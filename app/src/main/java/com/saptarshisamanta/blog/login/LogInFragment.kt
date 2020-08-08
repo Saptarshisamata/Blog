@@ -1,5 +1,6 @@
 package com.saptarshisamanta.blog.login
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -25,6 +26,9 @@ class LogInFragment : Fragment(){
         fragmentLogInBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_log_in,container,false)
 
         logInFragmentViewModel = ViewModelProvider(this).get(LogInFragmentViewModel::class.java)
+        //Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_fragmentOtp)
+        //view?.findNavController()?.navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
+        //Navigation.createNavigateOnClickListener(R.id.action_logInFragment_to_fragmentOtp)
         fragmentLogInBinding.login.setOnClickListener {
             login()
             //Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_fragmentOtp)
@@ -47,7 +51,7 @@ class LogInFragment : Fragment(){
             parameter["email"] = email
             parameter["password"] = password
             // TODO(01) login api handling
-            logInFragmentViewModel.logIn(parameter)
+            status = logInFragmentViewModel.logIn(parameter)
             when (status) {
                 400 -> {
                     Toast.makeText(context, "check your details", Toast.LENGTH_SHORT).show()
@@ -72,6 +76,10 @@ class LogInFragment : Fragment(){
                     //Toast.makeText(getApplication(), "user created", Toast.LENGTH_SHORT).show();
                     Log.d("200", "200")
                     //Intend to next activity
+                    val sharedPreferences = context?.getSharedPreferences("USERNAME", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences?.edit()
+                    editor?.putString("username",logInFragmentViewModel.token.toString())
+                    editor?.apply()
                     requireView().findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToFragmentOtp())
                 }
             }

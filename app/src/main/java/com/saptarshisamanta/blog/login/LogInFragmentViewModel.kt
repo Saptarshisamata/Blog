@@ -9,10 +9,8 @@ import retrofit2.Response
 
 class LogInFragmentViewModel : ViewModel(){
     private var status =0
-    private var token:String? = null
-    init {
+    var token:String? = null
 
-    }
     fun logIn(fields:Map<String,String>):Int{
         BlogApi.blogApiService.logIn(fields).enqueue(object : Callback<Token>{
             override fun onFailure(call: Call<Token>, t: Throwable) {

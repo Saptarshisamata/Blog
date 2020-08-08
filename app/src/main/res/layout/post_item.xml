@@ -12,6 +12,7 @@
         <variable
             name="viewModel"
             type="com.saptarshisamanta.blog.post.PostFragmentViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -39,7 +40,7 @@
                 android:layout_marginStart="6dp"
                 android:gravity="center|start"
                 android:layout_toEndOf="@+id/profile_image"
-                android:text="@{post.name}"
+                android:text="@{post.username}"
                 android:textSize="18sp"
                 tool:text="test text" />
 
@@ -53,6 +54,7 @@
                     android:id="@+id/post_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="@{post.post.empty ? View.GONE : View.VISIBLE }"
                     android:text="@{post.post}"
                     />
 
@@ -76,6 +78,7 @@
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:layout_marginStart="70dp"
+                    android:onClick="@{() -> clickListener.onFavClick(post)}"
                     android:src="@drawable/ic_baseline_favorite"/>
 
                 <TextView

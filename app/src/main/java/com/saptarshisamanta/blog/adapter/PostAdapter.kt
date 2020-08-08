@@ -20,7 +20,7 @@ class PostAdapter(var postListener: PostListener) :
     }
 
 
-    class PostViewHolder private constructor(var postItemBinding: PostItemBinding) :
+    class PostViewHolder private constructor(private var postItemBinding: PostItemBinding) :
         RecyclerView.ViewHolder(postItemBinding.root) {
         fun bind(
             post: Post,
@@ -39,20 +39,20 @@ class PostAdapter(var postListener: PostListener) :
             }
         }
     }
-
 }
 
 class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem._ID == newItem._ID
+        return oldItem._id == newItem._id
     }
 
     override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem == newItem
+        return oldItem._id == newItem._id && oldItem.fav_count ==newItem.fav_count
     }
 
 }
 
-class PostListener(var clickListener: (postId: String) -> Unit) {
-    fun onClick(post: Post) = clickListener(post._ID)
+class PostListener(var clickListener: (postId: String) -> Unit,var favClickListener:(postID: String) -> Unit) {
+    fun onClick(post: Post) = clickListener(post._id)
+    fun onFavClick(post: Post) = favClickListener(post._id)
 }

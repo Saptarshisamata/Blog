@@ -1,11 +1,9 @@
 package com.saptarshisamanta.blog.data
 
-import com.saptarshisamanta.blog.R
-
 data class Post(
-    var _ID:String,
+    var _id:String,
     //val profile_pic:String,
-    var name:String,
+    var username:String,
     val post:String,
     val post_pic:String ,
     var fav_count:Int,

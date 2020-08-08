@@ -1,20 +1,16 @@
-package com.saptarshisamanta.blog.signup
+package com.saptarshisamanta.blog.createPost
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.saptarshisamanta.blog.data.User
 import com.saptarshisamanta.blog.network.BlogApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignUpFragmentViewModel : ViewModel() {
-    private var status = 0
-
-    fun signUp(user: User): Int {
-        BlogApi.blogApiService.signUp(user).enqueue(object : Callback<Void> {
+class CreatePostViewModel : ViewModel(){
+    var status:Int=0
+    fun createPost(fields:Map<String,String>):Int{
+        BlogApi.blogApiService.createPost(fields).enqueue(object :Callback<Void>{
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d("faild", t.message.toString())
                 status = 1001
             }
 
@@ -25,5 +21,4 @@ class SignUpFragmentViewModel : ViewModel() {
         })
         return status
     }
-
 }
